@@ -120,6 +120,7 @@ services:
       POSTGRESQL_PASSWORD: 'TuXicoLQIFByhIL1PbuH'
       POSTGRESQL_USERNAME: guacamole_user
       RECORDING_SEARCH_PATH: /record
+      POSTGRESQL_ENABLED: "true"
     networks:
       - guacnetwork_compose
     volumes:
@@ -139,4 +140,4 @@ services:
       POSTGRES_DB: guacamole_db
     volumes:
       - ./data:/var/lib/postgresql/data:rw
-      - ./init:/docker-entrypoint-initdb.d:ro
+      - "init:/docker-entrypoint-initdb.d:ro"
