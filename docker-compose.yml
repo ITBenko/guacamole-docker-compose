@@ -126,7 +126,7 @@ services:
     volumes:
       - ./record:/record:rw
     ports:
-     - 8080/tcp 
+     - 8080:8080/tcp 
     restart: always
   postgres:
     container_name: postgres_guacamole_compose
