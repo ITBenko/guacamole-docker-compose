@@ -95,6 +95,8 @@
 networks:
   guacnetwork_compose:
     driver: bridge
+  dokploy-network:
+    external: true
 services:
   guacd:
     container_name: guacd_compose
@@ -123,10 +125,11 @@ services:
       POSTGRESQL_ENABLED: "true"
     networks:
       - guacnetwork_compose
+      - dokploy-network
     volumes:
       - ./record:/record:rw
     ports:
-     - 8080:8080/tcp 
+     - 8080/tcp 
     restart: always
   postgres:
     container_name: postgres_guacamole_compose
