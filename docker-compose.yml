@@ -95,8 +95,6 @@
 networks:
   guacnetwork_compose:
     driver: bridge
-
-# services
 services:
   guacd:
     container_name: guacd_compose
