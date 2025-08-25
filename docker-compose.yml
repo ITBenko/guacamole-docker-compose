@@ -111,11 +111,32 @@ services:
       - "1000"
     depends_on:
     - guacd
+    - postgres
     image: guacamole/guacamole:1.6.0
+    environment:
+      GUACD_HOSTNAME: guacd
+      POSTGRESQL_DATABASE: guacamole_db
+      POSTGRESQL_HOSTNAME: postgres
+      POSTGRESQL_PASSWORD: 'TuXicoLQIFByhIL1PbuH'
+      POSTGRESQL_USERNAME: guacamole_user
+      RECORDING_SEARCH_PATH: /record
     networks:
       - guacnetwork_compose
     volumes:
       - ./record:/record:rw
     ports:
-     - 8080:8080/tcp 
+     - 8080/tcp 
     restart: always
+  postgres:
+    container_name: postgres_guacamole_compose
+    image: postgres:15
+    networks:
+      - guacnetwork_compose
+    restart: always
+    environment:
+      POSTGRES_USER: guacamole_user
+      POSTGRES_PASSWORD: 'TuXicoLQIFByhIL1PbuH'
+      POSTGRES_DB: guacamole_db
+    volumes:
+      - ./data:/var/lib/postgresql/data:rw
+      - ./init:/docker-entrypoint-initdb.d:ro
