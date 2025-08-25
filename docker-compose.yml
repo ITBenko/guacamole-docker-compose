@@ -139,7 +139,7 @@ services:
     volumes:
       - ./record:/record:rw
     ports:
-     - 8080:8080/tcp 
+     - 8080/tcp 
     restart: always
   nginx:
    container_name: nginx_guacamole_compose
