@@ -117,7 +117,7 @@ services:
       - guacnetwork_compose
     restart: always
     volumes:
-    - ./init/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+    - ./init:/docker-entrypoint-initdb.d:ro
     - ./data:/var/lib/postgresql/data:Z
   guacamole:
     container_name: guacamole_compose
