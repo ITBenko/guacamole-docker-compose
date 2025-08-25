@@ -1,0 +1,14 @@
+services:
+  nginx-proxy:
+    build: .
+    networks:
+      - nginx-network
+      - dokploy-network
+    ports:
+      - 80/tcp
+
+networks:
+  nginx-network:
+    driver: bridge
+  dokploy-network:
+    external: true
