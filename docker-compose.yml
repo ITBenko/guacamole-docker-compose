@@ -141,5 +141,3 @@ services:
     ports:
      - 8080:8080/tcp 
     restart: always
-   networks:
-     - guacnetwork_compose
